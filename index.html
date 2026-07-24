@@ -500,7 +500,65 @@
         padding: 60px 0;
       }
     }
-  </style>
+#cookie-banner{
+position:fixed;
+left:20px;
+right:20px;
+bottom:20px;
+background:#ffffff;
+border:1px solid #d9e8f0;
+border-radius:18px;
+padding:22px;
+box-shadow:0 20px 50px rgba(0,0,0,.18);
+z-index:99999;
+display:none;
+max-width:900px;
+margin:auto;
+font-family:"DM Sans",sans-serif;
+}
+
+#cookie-banner h3{
+margin:0 0 10px;
+color:#073c70;
+}
+
+#cookie-banner p{
+margin:0 0 18px;
+line-height:1.6;
+color:#5c7385;
+font-size:15px;
+}
+
+.cookie-buttons{
+display:flex;
+gap:12px;
+flex-wrap:wrap;
+}
+
+.cookie-btn{
+padding:12px 22px;
+border-radius:10px;
+border:none;
+cursor:pointer;
+font-weight:700;
+font-size:15px;
+}
+
+.cookie-accept{
+background:#073c70;
+color:white;
+}
+
+.cookie-refuse{
+background:#f1f5f9;
+color:#073c70;
+}
+
+.cookie-link{
+color:#2d7eb5;
+text-decoration:none;
+font-weight:700;
+}  </style>
 </head>
 
 <body>
@@ -820,11 +878,75 @@
 
   </main>
 
-  <footer>
-    Gli integratori non sostituiscono una dieta varia ed equilibrata
-    e uno stile di vita sano. Non superare la dose giornaliera
-    consigliata.
-  </footer>
+<footer>
 
-</body>
+Gli integratori alimentari non sostituiscono una dieta varia ed equilibrata e uno stile di vita sano.<br><br>
+
+<a href="privacy.html">Privacy Policy</a> |
+
+<a href="cookie.html">Cookie Policy</a> |
+
+© 2026 Calma Chiara
+
+</footer>
+  </footer>
+<div id="cookie-banner">
+
+<h3>🍪 Privacy e Cookie</h3>
+
+<p>
+
+Questo sito utilizza esclusivamente cookie tecnici necessari al funzionamento.
+In futuro potranno essere utilizzati cookie statistici solo previo consenso.
+
+Puoi consultare la
+<a class="cookie-link" href="privacy.html">Privacy Policy</a>
+e la
+<a class="cookie-link" href="cookie.html">Cookie Policy</a>.
+
+</p>
+
+<div class="cookie-buttons">
+
+<button class="cookie-btn cookie-accept" onclick="acceptCookies()">
+Accetta
+</button>
+
+<button class="cookie-btn cookie-refuse" onclick="rejectCookies()">
+Rifiuta
+</button>
+
+</div>
+
+</div>
+<script>
+
+function showBanner(){
+
+if(localStorage.getItem("cookieConsent")==null){
+
+document.getElementById("cookie-banner").style.display="block";
+
+}
+
+}
+
+function acceptCookies(){
+
+localStorage.setItem("cookieConsent","accepted");
+
+document.getElementById("cookie-banner").style.display="none";
+
+}
+
+function rejectCookies(){
+
+localStorage.setItem("cookieConsent","rejected");
+
+document.getElementById("cookie-banner").style.display="none";
+
+}
+
+window.onload=showBanner;
+
 </html>
