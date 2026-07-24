@@ -879,74 +879,98 @@ font-weight:700;
   </main>
 
 <footer>
+  Gli integratori alimentari non sostituiscono una dieta varia ed equilibrata
+  e uno stile di vita sano.
+  <br><br>
 
-Gli integratori alimentari non sostituiscono una dieta varia ed equilibrata e uno stile di vita sano.<br><br>
+  <a href="privacy.html">Privacy Policy</a> |
+  <a href="cookie.html">Cookie Policy</a> |
+  <a href="#" onclick="resetCookieConsent(); return false;">
+    Gestisci cookie
+  </a> |
 
-<a href="privacy.html">Privacy Policy</a> |
-
-<a href="cookie.html">Cookie Policy</a> |
-
-© 2026 Calma Chiara
-
+  © 2026 Calma Chiara
 </footer>
-  </footer>
+
 <div id="cookie-banner">
 
-<h3>🍪 Privacy e Cookie</h3>
+  <h3>🍪 Privacy e Cookie</h3>
 
-<p>
+  <p>
+    Questo sito utilizza esclusivamente cookie tecnici necessari al
+    funzionamento. In futuro potranno essere utilizzati cookie statistici
+    solo previo consenso.
 
-Questo sito utilizza esclusivamente cookie tecnici necessari al funzionamento.
-In futuro potranno essere utilizzati cookie statistici solo previo consenso.
+    Puoi consultare la
+    <a class="cookie-link" href="privacy.html">Privacy Policy</a>
+    e la
+    <a class="cookie-link" href="cookie.html">Cookie Policy</a>.
+  </p>
 
-Puoi consultare la
-<a class="cookie-link" href="privacy.html">Privacy Policy</a>
-e la
-<a class="cookie-link" href="cookie.html">Cookie Policy</a>.
+  <div class="cookie-buttons">
 
-</p>
+    <button
+      type="button"
+      class="cookie-btn cookie-accept"
+      onclick="acceptCookies()"
+    >
+      Accetta
+    </button>
 
-<div class="cookie-buttons">
+    <button
+      type="button"
+      class="cookie-btn cookie-refuse"
+      onclick="rejectCookies()"
+    >
+      Rifiuta
+    </button>
 
-<button class="cookie-btn cookie-accept" onclick="acceptCookies()">
-Accetta
-</button>
-
-<button class="cookie-btn cookie-refuse" onclick="rejectCookies()">
-Rifiuta
-</button>
+  </div>
 
 </div>
 
-</div>
 <script>
+  function showBanner() {
+    const banner = document.getElementById("cookie-banner");
+    const consent = localStorage.getItem("cookieConsent");
 
-function showBanner(){
+    if (!consent && banner) {
+      banner.style.display = "block";
+    }
+  }
 
-if(localStorage.getItem("cookieConsent")==null){
+  function acceptCookies() {
+    localStorage.setItem("cookieConsent", "accepted");
 
-document.getElementById("cookie-banner").style.display="block";
+    const banner = document.getElementById("cookie-banner");
 
-}
+    if (banner) {
+      banner.style.display = "none";
+    }
+  }
 
-}
+  function rejectCookies() {
+    localStorage.setItem("cookieConsent", "rejected");
 
-function acceptCookies(){
+    const banner = document.getElementById("cookie-banner");
 
-localStorage.setItem("cookieConsent","accepted");
+    if (banner) {
+      banner.style.display = "none";
+    }
+  }
 
-document.getElementById("cookie-banner").style.display="none";
+  function resetCookieConsent() {
+    localStorage.removeItem("cookieConsent");
 
-}
+    const banner = document.getElementById("cookie-banner");
 
-function rejectCookies(){
+    if (banner) {
+      banner.style.display = "block";
+    }
+  }
 
-localStorage.setItem("cookieConsent","rejected");
+  document.addEventListener("DOMContentLoaded", showBanner);
+</script>
 
-document.getElementById("cookie-banner").style.display="none";
-
-}
-
-window.onload=showBanner;
-
+</body>
 </html>
