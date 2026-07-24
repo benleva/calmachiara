@@ -449,9 +449,18 @@
         height: 72px;
       }
 
+      .hero {
+        min-height: 980px;
+      }
+
+      .hero::after {
+        height: 120px;
+        bottom: -120px;
+      }
+
       .hero-grid {
         grid-template-columns: 1fr;
-        padding: 44px 0;
+        padding: 44px 0 180px;
       }
 
       .product {
@@ -464,7 +473,13 @@
         max-height: 470px;
       }
 
-      .benefits,
+      .benefits {
+        grid-template-columns: 1fr 1fr;
+        margin-bottom: 80px;
+        position: relative;
+        z-index: 5;
+      }
+
       .cards {
         grid-template-columns: 1fr 1fr;
       }
